@@ -1,0 +1,36 @@
+f = open('t8.shakespeare.txt', 'r')
+if f.mode == 'r':
+contents = f.read()
+print(contents)
+
+from googletrans import Translator
+
+file_translate = Translator()
+result = translator.translate(contents, dest='fr')
+print(result.text)
+with open('t8.shakespeare.txt', 'w') as f:
+  f.write(result.text)
+
+import csv
+ filename = "french_dictionary.csv"
+ fields = []
+rows = []
+  
+with open(filename, 'r') as csvfile:
+    csvreader = csv.reader(csvfile)
+      
+    fields = next(csvreader)
+  
+    for row in csvreader:
+        rows.append(row)
+  
+    print("Total no. of rows: %d"%(csvreader.line_num))
+  
+print('Field names are:' + ', '.join(field for field in fields))
+  
+print('\nThe conversion of rows are:\n')
+for row in rows[:]:
+    for col in row:
+        print("%10s"%col),
+    print('\n')
+
